@@ -740,6 +740,8 @@ GameObject:
   m_Component:
   - component: {fileID: 902609081}
   - component: {fileID: 902609080}
+  - component: {fileID: 902609082}
+  - component: {fileID: 902609083}
   m_Layer: 0
   m_Name: Game Scripts
   m_TagString: Untagged
@@ -759,7 +761,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f38637fa36c0aaac86a1e16bbdc9118, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  createNumbers: {fileID: 902609082}
   tilePrefab: {fileID: 5550186003900889852, guid: 0af9fdcb0f61636eba5bf1e9db811df1, type: 3}
+  tiles: []
   boardDimension: 2
 --- !u!4 &902609081
 Transform:
@@ -776,6 +780,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &902609082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 902609079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad62cc91fe8ed494fa5608935ec847a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnTiles: {fileID: 902609080}
+  randomizeTiles: {fileID: 902609083}
+--- !u!114 &902609083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 902609079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd56471c5f675b4690015c1a1e80312, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnTiles: {fileID: 902609080}
 --- !u!1 &981855930
 GameObject:
   m_ObjectHideFlags: 0
@@ -1036,7 +1067,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.96328926, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

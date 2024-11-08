@@ -20,9 +20,9 @@ public class RandomizeTiles : MonoBehaviour
         }
     }
 
-    private void MoveTile(GameObject tile, int index)
+    private static void MoveTile(GameObject tile, int index)
     {
-        GameObject emptyTile = GameObject.Find("Empty_Tile_" + index);
+        GameObject emptyTile = GameObject.Find("Placement_Empty_Tile_" + index);
         tile.transform.position = emptyTile.transform.position;
     }
 }

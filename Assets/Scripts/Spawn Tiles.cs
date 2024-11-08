@@ -4,20 +4,35 @@ using UnityEngine;
 public class SpawnTiles : MonoBehaviour
 {
     [SerializeField] private CreateNumbers createNumbers;
+    
     [SerializeField] private GameObject tilePrefab;
+    [SerializeField] private GameObject emptyTilePrefab;
 
+    [SerializeField] private Transform tilesParent;
+    [SerializeField] private Transform emptyPlayTilesParent;
+    [SerializeField] private Transform emptyPlacementTilesParent;
+
+    [HideInInspector] public List<string> winPosition;
     [HideInInspector] public List<GameObject> tiles;
 
     public int boardDimension;
     
     private void Start()
     {
-        //flipped these
-        Spawn(2.5f, true, new GameObject());
-        Spawn(-17.5f, false, tilePrefab);
+        Spawn(2.5f, true, emptyTilePrefab, "Placement_Empty_Tile_", emptyPlacementTilesParent); //placement board
+        Spawn(-17.5f, true, emptyTilePrefab, "Play_Empty_Tile_", emptyPlayTilesParent); //play board
+        GameStart();
     }
 
-    private void Spawn(float offset, bool isEmpty, GameObject tile)
+    public void GameStart()
+    {
+        tiles.Clear();
+        winPosition.Clear();
+        
+        Spawn(-17.5f, false, tilePrefab, "Tile_", tilesParent);
+    }
+
+    private void Spawn(float offset, bool isEmpty, GameObject tile, string name, Transform parent)
     {
         float spacing = -0.25f * boardDimension + 1.75f;
         float newScale = (14f - (boardDimension - 1) * spacing) / boardDimension;
@@ -25,7 +40,7 @@ public class SpawnTiles : MonoBehaviour
         float startingXPos = offset + (newScale / 2f + 0.5f);
         float startingYPos = 7.5f - (newScale / 2f + 0.5f);
 
-        tilePrefab.transform.localScale = new Vector3(newScale, newScale, tilePrefab.transform.localScale.z);
+        tile.transform.localScale = new Vector3(newScale, newScale, tile.transform.localScale.z);
 
         for (int i = 0; i < boardDimension; i++)
         {
@@ -36,17 +51,17 @@ public class SpawnTiles : MonoBehaviour
 
                 Vector3 newPos = new(newXPos, newYPos, 0);
 
-                GameObject currentTile = Instantiate(tile, newPos, tile.transform.rotation);
-
-                if (isEmpty)
+                GameObject currentTile = Instantiate(tile, newPos, tile.transform.rotation, parent);
+                
+                currentTile.name = name + (i * boardDimension + j);
+                if (currentTile.name.Contains("Play"))
                 {
-                    currentTile.name = "Empty_Tile_" + (i * boardDimension + j);
-                    //got rid of SetActive(false) -- made GO.Find() not work
+                    currentTile.AddComponent<EmptyTile>();
                 }
-                else
+                if (!isEmpty)
                 {
-                    currentTile.name = "Tile_" + (i * boardDimension + j);
                     tiles.Add(currentTile);
+                    winPosition.Add(currentTile.name);
                 }
             }
         }

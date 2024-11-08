@@ -26,6 +26,8 @@ public class TileMovement : MonoBehaviour
             if (hit.collider)
             {
                 clickedTile = hit.collider.transform;
+                Transform highlightObject = clickedTile.transform.Find("Highlight");
+                if(highlightObject) highlightObject.gameObject.SetActive(true);
             }
             Move();
         }
@@ -53,13 +55,13 @@ public class TileMovement : MonoBehaviour
         //swap tile positions
         else if (clickedTile && currentTile && clickedTile != currentTile && !clickedTile.name.Contains("Empty"))
         {
-            // ReSharper disable once SwapViaDeconstruction
+            Transform highlightObject = currentTile.transform.Find("Highlight");
+            if(highlightObject) highlightObject.gameObject.SetActive(false);
             
-            Vector3 clickedPos = clickedTile.position;
-            clickedTile.position = currentTile.position;
-            currentTile.position = clickedPos;
+            highlightObject = clickedTile.transform.Find("Highlight");
+            if(highlightObject) highlightObject.gameObject.SetActive(false);
             
-            //(currentTile.position, clickedTile.position) = (clickedTile.position, currentTile.position);
+            (currentTile.position, clickedTile.position) = (clickedTile.position, currentTile.position);
             
             clickedTile = null;
             currentTile = null;
@@ -67,13 +69,20 @@ public class TileMovement : MonoBehaviour
         //drop tile
         else if (currentTile && clickedTile == currentTile)
         {
+            Transform highlightObject = currentTile.transform.Find("Highlight");
+            if(highlightObject) highlightObject.gameObject.SetActive(false);
+            
             clickedTile = null;
             currentTile = null;
         }
         //place tile
         else if (currentTile)
         {
+            Transform highlightObject = currentTile.transform.Find("Highlight");
+            if(highlightObject) highlightObject.gameObject.SetActive(false);
+            
             currentTile.position = clickedTile.position;
+            
             clickedTile = null;
             currentTile = null;
         }

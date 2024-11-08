@@ -838,7 +838,7 @@ MonoBehaviour:
   emptyPlacementTilesParent: {fileID: 605231072}
   winPosition: []
   tiles: []
-  boardDimension: 2
+  boardDimension: 6
 --- !u!4 &902609081
 Transform:
   m_ObjectHideFlags: 0

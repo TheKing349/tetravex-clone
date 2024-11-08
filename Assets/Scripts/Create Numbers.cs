@@ -4,8 +4,8 @@ using TMPro;
 public class CreateNumbers : MonoBehaviour
 {
     [SerializeField] private SpawnTiles spawnTiles;
-
     [SerializeField] private RandomizeTiles randomizeTiles;
+    [SerializeField] private TriangleColor triangleColor;
     
     public void MakeNumbers()
     {
@@ -48,9 +48,11 @@ public class CreateNumbers : MonoBehaviour
                     
                     topText.text = previousBottomText;
                 }
+                
+                triangleColor.AssignColor(currentTile);
             }
         }
-
+        
         randomizeTiles.Randomize();
     }
 }

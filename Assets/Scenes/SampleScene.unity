@@ -810,6 +810,7 @@ GameObject:
   - component: {fileID: 902609085}
   - component: {fileID: 902609086}
   - component: {fileID: 902609087}
+  - component: {fileID: 902609088}
   m_Layer: 0
   m_Name: Game Scripts
   m_TagString: Untagged
@@ -837,7 +838,7 @@ MonoBehaviour:
   emptyPlacementTilesParent: {fileID: 605231072}
   winPosition: []
   tiles: []
-  boardDimension: 3
+  boardDimension: 2
 --- !u!4 &902609081
 Transform:
   m_ObjectHideFlags: 0
@@ -867,6 +868,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnTiles: {fileID: 902609080}
   randomizeTiles: {fileID: 902609083}
+  triangleColor: {fileID: 902609088}
 --- !u!114 &902609083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -893,12 +895,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   validPlacementLogic: {fileID: 902609086}
-  currentTile: {fileID: 0}
-  clickedTile: {fileID: 0}
-  originalCurrentTile: {fileID: 0}
-  originalClickedTile: {fileID: 0}
-  originalCurrentTilePosition: {x: 0, y: 0, z: 0}
-  originalClickedTilePosition: {x: 0, y: 0, z: 0}
   isFinishedMoving: 0
 --- !u!114 &902609085
 MonoBehaviour:
@@ -942,6 +938,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnTiles: {fileID: 902609080}
   tilesParent: {fileID: 1351656554}
+--- !u!114 &902609088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 902609079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1bf867e721b892458f5b47dfdfde54f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &981855930
 GameObject:
   m_ObjectHideFlags: 0

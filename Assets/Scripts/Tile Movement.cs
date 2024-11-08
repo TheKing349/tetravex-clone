@@ -5,16 +5,16 @@ public class TileMovement : MonoBehaviour
 {
     [SerializeField] private ValidPlacementLogic validPlacementLogic;
     
-    public Transform currentTile;
-    public Transform clickedTile;
+    private Transform currentTile;
+    private Transform clickedTile;
     
-    public Transform originalCurrentTile;
-    public Transform originalClickedTile;
+    private Transform originalCurrentTile;
+    private Transform originalClickedTile;
 
-    public Vector3 originalCurrentTilePosition;
-    public Vector3 originalClickedTilePosition;
+    private Vector3 originalCurrentTilePosition;
+    private Vector3 originalClickedTilePosition;
 
-    public bool isFinishedMoving;
+    [HideInInspector] public bool isFinishedMoving;
     
     private void Update()
     {
